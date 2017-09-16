@@ -17,7 +17,7 @@ public class TetrisBlock {
             //Line
             {{{1, 1, 1, 1}, {0, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}},
                     {{0, 1, 0, 0,}, {0, 1, 0, 0}, {0, 1, 0, 0}, {0, 1, 0, 0}},
-                    {{1, 1, 1, 1}, {1, 1, 1, 1}, {1, 1, 1, 1}, {1, 1, 1, 1}},
+                    {{1, 1, 1, 1}, {0, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}},
                     {{0, 1, 0, 0}, {0, 1, 0, 0}, {0, 1, 0, 0}, {0, 1, 0, 0}}},
             //T
             {{{0, 2, 0, 0}, {2, 2, 2, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}},
@@ -45,10 +45,10 @@ public class TetrisBlock {
                     {{0, 6, 6, 0}, {0, 0, 6, 6}, {0, 0, 0, 0}, {0, 0, 0, 0}},
                     {{0, 0, 6, 0}, {0, 6, 6, 0}, {0, 6, 0, 0}, {0, 0, 0, 0}}},
             //Square
-            {{{0, 7, 7, 0}, {0, 7, 7, 0}, {0, 7, 7, 0}, {0, 7, 7, 0}},
-                    {{0, 7, 7, 0}, {0, 7, 7, 0}, {0, 7, 7, 0}, {0, 7, 7, 0}},
-                    {{0, 7, 7, 0}, {0, 7, 7, 0}, {0, 7, 7, 0}, {0, 7, 7, 0}},
-                    {{0, 7, 7, 0}, {0, 7, 7, 0}, {0, 7, 7, 0}, {0, 7, 7, 0}}}
+            {{{0, 7, 7, 0}, {0, 7, 7, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}},
+                    {{0, 7, 7, 0}, {0, 7, 7, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}},
+                    {{0, 7, 7, 0}, {0, 7, 7, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}},
+                    {{0, 7, 7, 0}, {0, 7, 7, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}}}
     };
 
     /**
@@ -64,28 +64,28 @@ public class TetrisBlock {
     /**
      * Moves the block to the right
      */
-    private void moveRight() {
+    public void moveRight() {
         xAxis++;
     }
 
     /**
      * Moves the block to the left
      */
-    private void moveLeft() {
+    public void moveLeft() {
         xAxis--;
     }
 
     /**
      * Moves the block down
      */
-    private void moveDown() {
+    public void moveDown() {
         yAxis++;
     }
 
     /**
      * Rotates the block to the right and resets the rotation to 0 if it goes beyond 3
      */
-    private void rotateRight() {
+    public void rotateRight() {
         rotation++;
         if (rotation > 3) {
             rotation = 0;
@@ -95,7 +95,7 @@ public class TetrisBlock {
     /**
      * Rotates the block to the left and resets the rotation to 3 if it goes below 0
      */
-    private void rotateLeft() {
+    public void rotateLeft() {
         rotation--;
         if (rotation < 0) {
             rotation = 3;
@@ -104,9 +104,20 @@ public class TetrisBlock {
 
     /**
      * Returns the block's shape and rotation in an array
+     *
      * @return returns the block's shape and rotation in an array
      */
-    private int[][] getBlock() {
+    public int[][] getBlock() {
         return block[shape][rotation];
+    }
+
+    public int getxAxis() {
+        int returnValue = xAxis;
+        return returnValue;
+    }
+
+    public int getyAxis() {
+        int returnValue = yAxis;
+        return returnValue;
     }
 }
